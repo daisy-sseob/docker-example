@@ -1,0 +1,17 @@
+FROM node:14
+
+WORKDIR /app
+
+# package json을 변경하지 않는한 npm install 실행시 땡겨오는 라이브러리는 변하지 않기 때문에
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD [ "node", "app.mjs" ]
+
+# 이렇게 도커파일을 구성하면 소스코드를 변경할 때마다 npm install을 다시 실행하지 않습니다 !! 
+# 캐시된 레이어에 대해서는 다시 빌드하지 않으니 npm install 과정을 skip할 수 있습니다.
