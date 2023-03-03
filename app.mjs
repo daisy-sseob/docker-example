@@ -5,7 +5,7 @@ import connectToDatabase from './helpers.mjs'
 const app = express();
 
 app.get('/', (req, res) => {
-  console.log("log : get 메소드 호출")
+  console.log("log : get 요청 호출")
   res.send('<h2>Hi there! Docker 기초 🔥 by 심현섭 </h2>');
 });
 
